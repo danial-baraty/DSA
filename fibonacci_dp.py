@@ -1,4 +1,4 @@
-def fibonacci_dp(n):
+def fibonacci_dp(n: int) -> int:
     """
     Calculates the nth Fibonacci number using bottom-up dynamic programming (tabulation).
     
