@@ -32,6 +32,45 @@ class LinkedList:
             self.last.next = new_node
             self.last = new_node
 
+    def append_ordered(self, x):
+        pass
+    
+
+    def remove_item(self, x):
+        """
+        Remove the first occurrence of item 'x' from the linked list.
+        If the list is empty or item not found, return a message.
+        """
+        ptr = self.first   # Current node pointer
+        prev = None        # Tracks previous node
+
+        if not self.first:  # Case: list is empty
+            return "List is empty"
+
+        while ptr:
+            if ptr.info != x:
+                prev = ptr
+                ptr = ptr.next
+            else:
+                if ptr == self.first:  # Case: remove first node
+                    if ptr.next == None:  # Case: list has only one node
+                        self.first = self.last = None
+                        return
+                    self.first = ptr.next
+                    return
+                
+                elif ptr == self.last:  # Case: remove last node
+                    prev.next = None
+                    self.last = prev
+                    return
+                
+                else:  # Case: remove middle node
+                    prev.next = ptr.next
+                    return
+
+        return "Item not found"  # If loop finishes without finding 'x'
+
+
     def show(self):
         """
         Return a list of all node values in order.
